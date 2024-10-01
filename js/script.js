@@ -97,9 +97,6 @@ const config = {
                 skinUrlOrPathToFile: "",
                 rankColor: ""
             }
-        ],
-        builders: [
-
         ]
     },
 
