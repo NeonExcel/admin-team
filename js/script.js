@@ -93,7 +93,7 @@ const config = {
         helpers: [
             {
                 inGameName: "Unicorn967Mist",
-                rank: "Helper",
+                rank: "Helper+",
                 skinUrlOrPathToFile: "",
                 rankColor: ""
             }
