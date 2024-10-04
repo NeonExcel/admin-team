@@ -260,16 +260,7 @@ const setDataFromConfigToHtml = async () => {
 
     let locationPathname = location.pathname;
 
-    if(locationPathname == "/" || locationPathname.includes("index")) {
-        copyIp();
-        /*Set config data to header*/
-        serverLogoHeader.src = `images/` + config.serverInfo.serverLogoImageFileName;
-        discordOnlineUsers.innerHTML = await getDiscordOnlineUsers();
-        minecraftOnlinePlayers.innerHTML = await getMinecraftOnlinePlayer();
-    } else if(locationPathname.includes("rules")) {
-        copyIp();
-    }
-    else if(locationPathname.includes("admin-team")) {
+    if(locationPathname.includes("admin-team")) {
         for (let team in config.adminTeamPage) {
             const atContent = document.querySelector(".at-content");
             
