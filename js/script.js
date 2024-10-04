@@ -260,7 +260,7 @@ const setDataFromConfigToHtml = async () => {
 
     let locationPathname = location.pathname;
 
-    if(locationPathname == "/" || locationPathname.includes("")) {
+    if(locationPathname == "/" || locationPathname.includes("index")) {
         copyIp();
         /*Set config data to header*/
         serverLogoHeader.src = `images/` + config.serverInfo.serverLogoImageFileName;
