@@ -260,7 +260,7 @@ const setDataFromConfigToHtml = async () => {
 
     let locationPathname = location.pathname;
 
-    if(locationPathname == "/" || locationPathname.includes("index")) {
+    if(locationPathname == "/" || locationPathname.includes("")) {
         copyIp();
         /*Set config data to header*/
         serverLogoHeader.src = `images/` + config.serverInfo.serverLogoImageFileName;
@@ -269,7 +269,7 @@ const setDataFromConfigToHtml = async () => {
     } else if(locationPathname.includes("rules")) {
         copyIp();
     }
-    else if(locationPathname.includes("admin-team")) {
+    else if(locationPathname.includes("index")) {
         for (let team in config.adminTeamPage) {
             const atContent = document.querySelector(".at-content");
             
