@@ -78,13 +78,13 @@ const config = {
                 rankColor: ""
             },
             {
-                inGameName: "NeonXL",
+                inGameName: "Unicorn967Mist",
                 rank: "Discord manager",
                 skinUrlOrPathToFile: "",
                 rankColor: ""
             },
             {
-                inGameName: "Unicorn967Mist",
+                inGameName: "NeonXL",
                 rank: "Discord manager",
                 skinUrlOrPathToFile: "",
                 rankColor: ""
