@@ -8,8 +8,8 @@ const config = {
     serverInfo: {
         serverLogoImageFileName: "logo.png", /*This is a file name for logo in /images/ (If you upload new logo with other name, you must change this value)*/
         serverName: "NeonExcel.Github.io", /*Server name*/
-        serverIp: "Hidden SMP", /*Server IP (if you want to add online user counter, you must have true the enable-status and enable-query of server.properties)*/
-        discordServerID: "1290701324492738654" /*Your server ID (if you want to add online user counter, you must have enabled Discord server widget)*/
+        serverIp: "This is", /*Server IP (if you want to add online user counter, you must have true the enable-status and enable-query of server.properties)*/
+        discordServerID: "489529070913060867" /*Your server ID (if you want to add online user counter, you must have enabled Discord server widget)*/
     },
 
     /*Admin-Team
@@ -25,7 +25,6 @@ const config = {
     ]
     then you must add this group with same name to atGroupsDefaultColors and set the color you want for the group.
     You can also set a special color for a specific user, just put it in the rankColor of that user.
-
     All skins for original players are generate automaticaly. If you want to add skins to warez players, yout must add url for skin to skinUrlOrPathToFile
         {
             inGameName: "Astronavta",  <--- In-Game name
@@ -33,7 +32,6 @@ const config = {
             skinUrlOrPathToFile: "",  <-- url or file path for skin image for warez players (if you have original minecraft leave it be empty)
             rankColor: "rgba(255, 3, 3, 1)"  <-- special rank color
         },
-
     If you want to change skin type replace userSKinTypeInAdminTeam with something you want from array in comments
     */
     userSKinTypeInAdminTeam: "bust", /*[full, bust, head, face, front, frontFull, skin]*/
@@ -46,25 +44,19 @@ const config = {
     adminTeamPage: {
         leaders: [
             {
-                inGameName: "Astronavta",
+                inGameName: "NeonXL",
                 rank: "Owner",
                 skinUrlOrPathToFile: "",
                 rankColor: "rgba(255, 3, 3, 1)"
             },
             {
-                inGameName: "Astronavta",
-                rank: "Owner",
-                skinUrlOrPathToFile: "",
-                rankColor: "rgba(255, 3, 3, 1)"
-            },
-            {
-                inGameName: "Astronavta",
+                inGameName: "NeonXL",
                 rank: "Manager",
                 skinUrlOrPathToFile: "",
                 rankColor: ""
             },
             {
-                inGameName: "Astronavta",
+                inGameName: "NeonXL",
                 rank: "Moderator",
                 skinUrlOrPathToFile: "",
                 rankColor: ""
@@ -72,25 +64,25 @@ const config = {
         ],
         developers: [
             {
-                inGameName: "Astronavta",
+                inGameName: "NeonXL",
                 rank: "Developer",
                 skinUrlOrPathToFile: "",
                 rankColor: ""
             },
             {
-                inGameName: "Astronavta",
-                rank: "Developer",
-                skinUrlOrPathToFile: "",
-                rankColor: ""
-            },
-            {
-                inGameName: "Astronavta",
+                inGameName: "NeonXL",
                 rank: "Webmaster",
                 skinUrlOrPathToFile: "",
                 rankColor: ""
             },
             {
-                inGameName: "Astronavta",
+                inGameName: "NeonXL",
+                rank: "Discord manager",
+                skinUrlOrPathToFile: "",
+                rankColor: ""
+            },
+            {
+                inGameName: "Unicorn967Mist",
                 rank: "Discord manager",
                 skinUrlOrPathToFile: "",
                 rankColor: ""
@@ -98,76 +90,8 @@ const config = {
         ],
         helpers: [
             {
-                inGameName: "Astronavta",
-                rank: "Helper++",
-                skinUrlOrPathToFile: "",
-                rankColor: ""
-            },
-            {
-                inGameName: "Astronavta",
-                rank: "Helper++",
-                skinUrlOrPathToFile: "",
-                rankColor: ""
-            },
-            {
-                inGameName: "Astronavta",
+                inGameName: "Unicorn967Mist",
                 rank: "Helper+",
-                skinUrlOrPathToFile: "",
-                rankColor: ""
-            },
-            {
-                inGameName: "Astronavta",
-                rank: "Helper+",
-                skinUrlOrPathToFile: "",
-                rankColor: ""
-            },
-            {
-                inGameName: "Astronavta",
-                rank: "Helper",
-                skinUrlOrPathToFile: "",
-                rankColor: ""
-            },
-            {
-                inGameName: "Astronavta",
-                rank: "Helper",
-                skinUrlOrPathToFile: "",
-                rankColor: ""
-            }
-        ],
-        builders: [
-            {
-                inGameName: "Astronavta",
-                rank: "Builder++",
-                skinUrlOrPathToFile: "",
-                rankColor: ""
-            },
-            {
-                inGameName: "Astronavta",
-                rank: "Builder++",
-                skinUrlOrPathToFile: "",
-                rankColor: ""
-            },
-            {
-                inGameName: "Astronavta",
-                rank: "Builder+",
-                skinUrlOrPathToFile: "",
-                rankColor: ""
-            },
-            {
-                inGameName: "Astronavta",
-                rank: "Builder+",
-                skinUrlOrPathToFile: "",
-                rankColor: ""
-            },
-            {
-                inGameName: "Astronavta",
-                rank: "Builder",
-                skinUrlOrPathToFile: "",
-                rankColor: ""
-            },
-            {
-                inGameName: "Astronavta",
-                rank: "Builder",
                 skinUrlOrPathToFile: "",
                 rankColor: ""
             }
@@ -304,7 +228,7 @@ const copyIp = () => {
     copyIpButton.addEventListener("click", () => {
         try {
             navigator.clipboard.writeText(config.serverInfo.serverIp);
-    
+
             copyIpAlert.classList.add("active");
 
             setTimeout(() => {
@@ -334,10 +258,19 @@ const setDataFromConfigToHtml = async () => {
 
     let locationPathname = location.pathname;
 
-    if(locationPathname.includes("index")) {
+    if(locationPathname == "/" || locationPathname.includes("index")) {
+        copyIp();
+        /*Set config data to header*/
+        serverLogoHeader.src = `images/` + config.serverInfo.serverLogoImageFileName;
+        discordOnlineUsers.innerHTML = await getDiscordOnlineUsers();
+        minecraftOnlinePlayers.innerHTML = await getMinecraftOnlinePlayer();
+    } else if(locationPathname.includes("rules")) {
+        copyIp();
+    }
+    else if(locationPathname.includes("admin-team")) {
         for (let team in config.adminTeamPage) {
             const atContent = document.querySelector(".at-content");
-            
+
             const group = document.createElement("div");
             group.classList.add("group");
             group.classList.add(team);
