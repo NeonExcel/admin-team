@@ -269,7 +269,7 @@ const setDataFromConfigToHtml = async () => {
     } else if(locationPathname.includes("rules")) {
         copyIp();
     }
-    else if(locationPathname.includes("index")) {
+    else if(locationPathname.includes("admin-team")) {
         for (let team in config.adminTeamPage) {
             const atContent = document.querySelector(".at-content");
             
