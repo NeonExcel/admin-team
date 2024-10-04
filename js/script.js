@@ -260,7 +260,7 @@ const setDataFromConfigToHtml = async () => {
 
     let locationPathname = location.pathname;
 
-    if(locationPathname.includes("admin-team")) {
+    if(locationPathname.includes("index")) {
         for (let team in config.adminTeamPage) {
             const atContent = document.querySelector(".at-content");
             
